@@ -7,7 +7,6 @@ const gulp = require("gulp"),
   del = require("del"),
   htmlMin = require("gulp-htmlmin"),
   cleanCSS = require("gulp-clean-css"),
-  imagemin = require("gulp-imagemin"),
   htmlReplace = require("gulp-html-replace"),
   uglify = require("gulp-uglify");
 
@@ -118,30 +117,18 @@ function copyJavaScript(cb) {
   cb();
 }
 
-// copy img and compress
-function compressImg(cb) {
-  gulp
-    .src("./src/assets/img/**/*")
-    .pipe(
-      imagemin([
-        imagemin.gifsicle({ interlaced: true }),
-        imagemin.jpegtran({ progressive: true }),
-        imagemin.optipng({ optimizationLevel: 5 }),
-        imagemin.svgo({
-          plugins: [{ removeViewBox: true }, { cleanupIDs: false }]
-        })
-      ])
-    )
-    .pipe(gulp.dest(`./${path}/assets/img`));
+// Copy image
+function copyImage(cb) {
+  gulp.src("./src/assets/img/**/*").pipe(gulp.dest(`./${path}/assets/img`));
 
   cb();
 }
 
 exports.watch = watch;
-exports.dist = gulp.series(
+exports.build = gulp.series(
   deleteFolder,
   minifyHTML,
   minifyCSS,
   copyJavaScript,
-  compressImg
+  copyImage
 );

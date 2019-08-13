@@ -23,10 +23,9 @@ class Heading {
 
     this.count += 1;
 
-    if (this.count >= 4) {
+    if (this.count > this.headerHeadings.length) {
       this.count = 1;
     }
-    console.log(this.count);
   }
 }
 
