@@ -1,0 +1,8 @@
+.wrap {
+  margin: 0 5rem;
+  height: inherit;
+
+  @include breakpoint(xs) {
+    margin: 0 1.5rem;
+  }
+}

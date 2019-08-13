@@ -1,0 +1,26 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+
+  @include breakpoint(xs) {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  box-sizing: border-box;
+  color: $grey;
+  font-weight: 400;
+}
+
+::selection {
+  background: $primary;
+  color: $dark;
+}

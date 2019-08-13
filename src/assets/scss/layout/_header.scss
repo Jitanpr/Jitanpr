@@ -1,0 +1,64 @@
+.header {
+  background: $dark;
+  height: 100vh;
+
+  &_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    height: inherit;
+    text-align: center;
+  }
+
+  &_sub {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+  }
+
+  &_logo {
+    align-self: center;
+    height: 13rem;
+    width: 13rem;
+    border-radius: 50%;
+    margin-bottom: 5rem;
+    pointer-events: none;
+    transform: rotate(4deg);
+    border: 0.5rem solid rgba($black, 0.2);
+    user-select: none;
+  }
+
+  &_h {
+    display: none;
+    transition: all 230ms ease;
+
+    &--1 {
+      display: inline-block;
+    }
+
+    &--show {
+      animation: toTop 230ms ease;
+    }
+  }
+
+  &_icons {
+    margin-top: 2rem;
+  }
+
+  &_link {
+    text-decoration: none;
+    padding: 1rem;
+    background: rgba($black, 0.15);
+    margin-right: 0.5rem;
+    display: inline-block;
+    transition: all 230ms ease;
+    border-radius: 50%;
+
+    &:hover {
+      background: rgba($black, 0.25);
+    }
+  }
+
+  &_icon {
+  }
+}
