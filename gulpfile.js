@@ -92,7 +92,7 @@ function minifyHTML(cb) {
         js: "./assets/js/main.js"
       })
     )
-    .pipe(htmlMin({ collapseWhitespace: true }))
+    .pipe(htmlMin({ collapseWhitespace: true, removeComments: true }))
     .pipe(gulp.dest(`./${path}`));
 
   cb();
@@ -124,11 +124,22 @@ function copyImage(cb) {
   cb();
 }
 
+// Copy root To root
+function copyRootToRoot(cb){
+  gulp.src(["./src/*", "!./src/assets/", "!./src/temp/", "!./src/*.html"])
+    .pipe(gulp.dest(`./${path}`))
+
+    cb()
+}
+
+
+
 exports.watch = watch;
 exports.build = gulp.series(
   deleteFolder,
   minifyHTML,
   minifyCSS,
   copyJavaScript,
-  copyImage
+  copyImage,
+  copyRootToRoot
 );
